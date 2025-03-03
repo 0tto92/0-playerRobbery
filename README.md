@@ -1,4 +1,5 @@
 Simple player robbery with own hands up animation
+https://discord.gg/fzpfwdNfE9
 
 ox_lib, ox_target and ox_inventory is required
 
