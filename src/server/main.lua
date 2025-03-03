@@ -1,0 +1,1 @@
+lib.versionCheck('0tto92/0-playerRobbery')
