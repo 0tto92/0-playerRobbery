@@ -1,6 +1,6 @@
 author '0ttoo'
 description 'Player robbery'
-version '1.1.0'
+version '1.0.0'
 
 fx_version 'cerulean'
 game 'gta5'
