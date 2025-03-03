@@ -1,14 +1,15 @@
 local SHARED = require 'src.shared'
-local PLAYER_HANDS_UP = false
 
 local ANIMATION_DICT = SHARED.handsUp.anim.dict
 local ANIMATION_CLIP = SHARED.handsUp.anim.clip
+local PLAYER_HANDS_UP = false
+
+local IsEntityPlayingAnim = IsEntityPlayingAnim
+local IsPedDeadOrDying = IsPedDeadOrDying
+local IsPedArmed = IsPedArmed
 
 ---@param entity number
 local function robPlayer(entity)
-    local playerId = NetworkGetPlayerIndexFromPed(entity)
-    local serverId = GetPlayerServerId(playerId)
-
     if not lib.progressCircle({
         duration = SHARED.progressbar.duration,
         label = SHARED.progressbar.label,
@@ -33,6 +34,8 @@ local function robPlayer(entity)
         return
     end
 
+    local playerId = NetworkGetPlayerIndexFromPed(entity)
+    local serverId = GetPlayerServerId(playerId)
     return exports.ox_inventory:openInventory(
         'player',
         serverId
