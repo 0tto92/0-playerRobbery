@@ -50,7 +50,7 @@ local function canRobPlayer(entity)
         return false
     end
 
-    if not IsPedArmed(playerPed, 1 | 4) then
+    if not IsPedArmed(cache.ped, 1 | 4) then
         return false
     end
 
