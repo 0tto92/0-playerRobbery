@@ -1,13 +1,37 @@
 local SHARED = require 'src.shared'
 local PLAYER_HANDS_UP = false
 
-local ANIMATION_DICT = SHARED.animation.dict
-local ANIMATION_NAME = SHARED.animation.name
+local ANIMATION_DICT = SHARED.handsUp.anim.dict
+local ANIMATION_CLIP = SHARED.handsUp.anim.clip
 
 ---@param entity number
 local function robPlayer(entity)
     local playerId = NetworkGetPlayerIndexFromPed(entity)
     local serverId = GetPlayerServerId(playerId)
+
+    if not lib.progressCircle({
+        duration = SHARED.progressbar.duration,
+        label = SHARED.progressbar.label,
+        position = SHARED.progressbar.position,
+        useWhileDead = false,
+        allowRagdoll = false,
+        allowSwimming = false,
+        allowCuffed = false,
+        allowFalling = false,
+        canCancel = true,
+        disable = {
+            car = true,
+            move = true,
+            combat = true,
+            sprint = true
+        },
+        anim = {
+            dict = SHARED.progressbar.anim.dict,
+            clip = SHARED.progressbar.anim.clip
+        }
+    }) then
+        return
+    end
 
     return exports.ox_inventory:openInventory(
         'player',
@@ -22,7 +46,7 @@ local function canRobPlayer(entity)
         return false
     end
 
-    if not IsEntityPlayingAnim(entity, ANIMATION_DICT, ANIMATION_NAME, 3) then
+    if not IsEntityPlayingAnim(entity, ANIMATION_DICT, ANIMATION_CLIP, 3) then
         return false
     end
 
@@ -46,7 +70,7 @@ exports.ox_target:addGlobalPlayer({
     end
 })
 
-if SHARED.animation.enabled then
+if SHARED.handsUp.enabled then
     RegisterCommand('player_robbery:handsup', function()
         if IsNuiFocused() then
             return
@@ -59,13 +83,13 @@ if SHARED.animation.enabled then
         if not PLAYER_HANDS_UP then
             PLAYER_HANDS_UP = true
     
-            lib.playAnim(cache.ped, ANIMATION_DICT, ANIMATION_NAME, 1.5, 1.5, -1, 50, 0, false, false, false)
+            lib.playAnim(cache.ped, ANIMATION_DICT, ANIMATION_CLIP, 1.5, 1.5, -1, 50, 0, false, false, false)
             return
         end
     
         PLAYER_HANDS_UP = false
-        StopAnimTask(cache.ped, ANIMATION_DICT, ANIMATION_NAME, 1.0)
+        StopAnimTask(cache.ped, ANIMATION_DICT, ANIMATION_CLIP, 1.0)
     end, false)
     
-    RegisterKeyMapping('player_robbery:handsup', SHARED.animation.keyMapping.label, 'keyboard', SHARED.animation.keyMapping.key)
+    RegisterKeyMapping('player_robbery:handsup', SHARED.handsUp.keyMapping.label, 'keyboard', SHARED.handsUp.keyMapping.key)
 end

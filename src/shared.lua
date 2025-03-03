@@ -5,10 +5,22 @@ return {
         distance = 1.5
     },
 
-    animation = {
+    progressbar = {
+        duration = 4000,
+        label = 'Searching pockets',
+        position = 'middle',
+        anim = {
+            dict = 'anim@gangops@facility@servers@bodysearch@',
+            clip = 'player_search'
+        }
+    },
+
+    handsUp = {
         enabled = true,
-        dict = 'missminuteman_1ig_2',
-        name = 'handsup_base',
+        anim = {
+            dict = 'missminuteman_1ig_2',
+            clip = 'handsup_base',
+        },
         keyMapping = {
             label = 'Hands up',
             key = 'z'
