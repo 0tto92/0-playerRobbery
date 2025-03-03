@@ -1,6 +1,6 @@
 Simple player robbery with own hands up animation
 
-ox_lib and ox_inventory is required
+ox_lib, ox_target and ox_inventory is required
 
 
 
