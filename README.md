@@ -11,4 +11,3 @@ Other releases
 * :magnet: [Metal Detecting Script 9.99€](https://forum.cfx.re/t/standalone-metal-detecting/5317167)
 * :houses: [Property Robbery Bundle 24.99€](https://forum.cfx.re/t/property-robbery-bundle-7-robberies/5310473)
 * :construction_worker_man: [Advanced Container Robbery 14.99€](https://forum.cfx.re/t/advanced-construction-container-robbery/5283463)
-* :gun: [Player Robbery (FREE)](https://forum.cfx.re/t/player-robbery/5310305)
